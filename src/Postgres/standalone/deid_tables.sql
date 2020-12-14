@@ -1,5 +1,33 @@
 SET ROLE fh_phi_admin;
 
+DROP TABLE IF EXISTS gpc_aki_project.mcw_aki_onsets;
+CREATE TABLE gpc_aki_project.mcw_aki_onsets AS (
+SELECT
+  gpc_aki_project.aki_phi_id(patid) AS patid
+ ,gpc_aki_project.aki_phi_id(encounterid) AS encounterid
+ ,admit_date         + gpc_aki_project.aki_offset_from_zid(patid) AS admit_date
+ ,discharge_date     + gpc_aki_project.aki_offset_from_zid(patid) AS discharge_date
+ ,serum_creat_base
+ ,nonaki_anchor      + gpc_aki_project.aki_offset_from_zid(patid) AS nonaki_anchor
+ ,nonaki_since_admit 
+ ,non_aki_scr        
+ ,non_aki_inc        
+ ,aki1_onset         + gpc_aki_project.aki_offset_from_zid(patid) AS aki1_onset
+ ,aki1_since_admit   
+ ,aki1_scr           
+ ,aki1_inc           
+ ,aki2_onset         + gpc_aki_project.aki_offset_from_zid(patid) AS aki2_onset
+ ,aki2_since_admit 
+ ,aki2_scr          
+ ,aki2_inc          
+ ,aki3_onset         + gpc_aki_project.aki_offset_from_zid(patid) AS  aki3_onset
+ ,aki3_since_admit
+ ,aki3_scr        
+ ,aki3_inc        
+ FROM gpc_aki_project.aki_onsets
+);
+
+
 DROP TABLE IF EXISTS gpc_aki_project.mcw_aki_demo;
 CREATE TABLE gpc_aki_project.mcw_aki_demo AS (
 SELECT
@@ -135,3 +163,5 @@ SELECT
  ,days_since_admit  
 FROM gpc_aki_project.aki_lab
 );
+
+

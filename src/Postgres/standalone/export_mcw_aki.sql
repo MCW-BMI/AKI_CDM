@@ -1,4 +1,7 @@
 SET ROLE fh_phi_admin; 
+
+\COPY  gpc_aki_project.consort_diagram  TO '/tmp/mcw_aki_consort_diagram.dsv'  WITH (FORMAT 'csv', HEADER true, DELIMITER '|');
+\COPY  gpc_aki_project.mcw_aki_onsets   TO '/tmp/mcw_aki_onsets.dsv'           WITH (FORMAT 'csv', HEADER true, DELIMITER '|');
 \COPY  gpc_aki_project.mcw_aki_demo  TO '/tmp/mcw_aki_demo.dsv'  WITH (FORMAT 'csv', HEADER true, DELIMITER '|');
 \COPY  gpc_aki_project.mcw_aki_vital TO '/tmp/mcw_aki_vital.dsv' WITH (FORMAT 'csv', HEADER true, DELIMITER '|');
 \COPY  gpc_aki_project.mcw_aki_dx    TO '/tmp/mcw_aki_dx.dsv'    WITH (FORMAT 'csv', HEADER true, DELIMITER '|');
